@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{F8F96AA6-906E-4291-A9B4-EA6D49D8DEF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{F8F96AA6-906E-4291-A9B4-EA6D49D8DEF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{34B40274-5271-41C7-8A83-F657E3D915D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL_Memory", "BLL_Memory\BLL_Memory.csproj", "{7FD73307-21CF-47E8-8244-29E445A5D698}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{DB4934FC-42C5-4077-A729-5D300BE56207}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{F8F96AA6-906E-4291-A9B4-EA6D49D8DEF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8F96AA6-906E-4291-A9B4-EA6D49D8DEF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8F96AA6-906E-4291-A9B4-EA6D49D8DEF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34B40274-5271-41C7-8A83-F657E3D915D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B40274-5271-41C7-8A83-F657E3D915D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B40274-5271-41C7-8A83-F657E3D915D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B40274-5271-41C7-8A83-F657E3D915D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FD73307-21CF-47E8-8244-29E445A5D698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FD73307-21CF-47E8-8244-29E445A5D698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FD73307-21CF-47E8-8244-29E445A5D698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FD73307-21CF-47E8-8244-29E445A5D698}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB4934FC-42C5-4077-A729-5D300BE56207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB4934FC-42C5-4077-A729-5D300BE56207}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB4934FC-42C5-4077-A729-5D300BE56207}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB4934FC-42C5-4077-A729-5D300BE56207}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
