@@ -37,22 +37,27 @@ constructor(private httpClient: HttpClient){}
   }
 
   delete(id: number): Observable<void> {
-    this.lista = this.lista.filter(k => k.id !== id);
-    return of(undefined);
+    // this.lista = this.lista.filter(k => k.id !== id);
+    // return of(undefined);
+    const url= `${this.baseURL}/${id}`;
+    return this.httpClient.delete<void>(url);
   }
 
   put(id: number, body: UslugaBody): Observable<void> {
-    const ksiazka = this.lista.find(k => k.id === id);
-    if(ksiazka == null) { 
-      throw new Error('Nie znaleziono wskazanej książki');
-    }
+    // const ksiazka = this.lista.find(k => k.id === id);
+    // if(ksiazka == null) { 
+    //   throw new Error('Nie znaleziono wskazanej książki');
+    // }
 
-    ksiazka.wykonawca = body.wykonawca;
-    ksiazka.rodzaj = body.rodzaj;
-    ksiazka.rok = body.rok;
-    ksiazka.nazwa = body.nazwa;
+    // ksiazka.wykonawca = body.wykonawca;
+    // ksiazka.rodzaj = body.rodzaj;
+    // ksiazka.rok = body.rok;
+    // ksiazka.nazwa = body.nazwa;
 
-    return of(undefined);
+    // return of(undefined);
+
+    const url= `${this.baseURL}/${id}`;
+    return this.httpClient.put<void>(url, body);
   }
 
   post(body: UslugaBody): Observable<void> {

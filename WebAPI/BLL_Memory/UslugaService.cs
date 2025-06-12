@@ -2,6 +2,7 @@
 using BLL.Models;
 using BLL_Memory.Extensions;
 using DAL.Entities;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BLL_Memory
 {
@@ -35,7 +36,27 @@ namespace BLL_Memory
             return uslugaEntity.ToDTO();
         }
         public void Post(UslugaPostDTO uslugaPostDTO)
-        {
+        {            
+            if (uslugaPostDTO.Nazwa.Length >= 100)
+            {
+                throw new ApplicationException($"nazwa nie może być dłuższa od 100, " +
+                    $"było {uslugaPostDTO.Nazwa.Length}");
+            }
+            if (uslugaPostDTO.Rodzaj.ToLower() != "budowlana")
+            {
+                if (uslugaPostDTO.Rodzaj.ToLower() != "projektowa")
+                {
+                    if (uslugaPostDTO.Rodzaj.ToLower() != "edukacyjna")
+                    {
+                        throw new ApplicationException($"nieprawidłowy rodzaj ={uslugaPostDTO.Rodzaj}");
+                    }
+                }
+            }
+            if (uslugaPostDTO.Rok > 2025)
+            {
+                throw new ApplicationException($"nieprawidłowy rok ={uslugaPostDTO.Rok}");
+            }
+
             UslugaEntity uslugaEntity = new UslugaEntity
             {
                 Id = IdGen++,
@@ -45,6 +66,50 @@ namespace BLL_Memory
                 Rok = uslugaPostDTO.Rok
             };
             uslugi.Add(uslugaEntity);
+        }
+        public void delete(int id)
+        {
+            UslugaEntity test = uslugi.Find(us => us.Id == id);
+            if (test == null)
+            {
+                throw new ApplicationException($"Nie znaleziono osoby o id ={id}");
+            }
+            uslugi.Remove(test);
+        }
+        public void put(int id, UslugaDTO uslugaDTO)
+        {
+            UslugaEntity test = uslugi.Find(us => us.Id == id);
+            
+            if (test == null)
+            {
+                throw new ApplicationException($"Nie znaleziono osoby o id ={id}");
+            }
+            if (uslugaDTO.Nazwa.Length>=100)
+            {
+                throw new ApplicationException($"nazwa nie może być dłuższa od 100, " +
+                    $"było {uslugaDTO.Nazwa.Length}");
+            }
+            if(uslugaDTO.Rodzaj.ToLower() != " budowlana")
+            {
+                if (uslugaDTO.Rodzaj.ToLower() != " projektowa")
+                {
+                    if (uslugaDTO.Rodzaj.ToLower() != " edukacyjna")
+                    {
+                        throw new ApplicationException($"nieprawidłowy rodzaj ={uslugaDTO.Rodzaj}");
+                    }
+                }
+            }
+            if (uslugaDTO.Rok > 2025)
+            {
+                throw new ApplicationException($"nieprawidłowy rok ={uslugaDTO.Rok}");
+            }
+            uslugi.Remove(test);
+            test.Nazwa=uslugaDTO.Nazwa;
+            test.Wykonawca = uslugaDTO.Wykonawca;
+            test.Rodzaj = uslugaDTO.Rodzaj;
+            test.Rok=uslugaDTO.Rok;
+
+            uslugi.Add(test);
         }
     }
 }

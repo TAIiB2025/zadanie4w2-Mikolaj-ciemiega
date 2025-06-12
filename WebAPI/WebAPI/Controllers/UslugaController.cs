@@ -26,9 +26,38 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] UslugaPostDTO o)
+        public IActionResult Post([FromBody] UslugaPostDTO o)
         {
-            uslugaService.Post(o);
+            try {
+                uslugaService.Post(o);
+            }catch(Exception ex)
+            {
+                
+                return StatusCode (500);
+            }
+
+            return StatusCode(200);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, UslugaDTO o)
+        {
+            try
+            {
+                uslugaService.put(id,o);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500);
+            }
+
+            return StatusCode(200);
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            uslugaService.delete(id);
         }
 
     }
